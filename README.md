@@ -1,2 +1,1 @@
-# Bwar3am.github.io
-this is my resume webpage
+this is a simple webpage for my resume and doesn't have any special technology and back-end
