@@ -116,7 +116,29 @@ body {
         padding: 5px;
     }
 
-    
+    .flex-container p {
+        font-size: 5px;
+    }
+    .flex-container h3{
+        font-size: 8px;
+    }
+    .flex-container a{
+        font-size: 7px;
+    }
+    .header h2{
+        font-size: 7px;
+    }
+    .header p{
+        font-size: 3px;
+    }
+    .navbar a{
+        font-size: 7px;
+    }
+    .header img{
+        background-size: auto;
+    }
+
+
 
    
 
