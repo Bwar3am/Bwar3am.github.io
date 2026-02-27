@@ -30,32 +30,109 @@ body {
     background-color: rgba(0, 0, 0, 0.8);        /* Semi-transparent black */
     padding: 15px 40px;
     flex-wrap: wrap;
-    backdrop-filter: blur(5px);                   /* Optional: adds blur effect behind navbar */
+    backdrop-filter: blur(5px);                   /* Adds blur effect behind navbar */
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2); /* Green glow effect */
 }
 
 /* Left section of navbar - flex container for links */
 .nav-left {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
 }
 
-/* Navbar link styles - white text with transition effect */
-.nav-left a {
+/* ================= HOME BUTTON STYLES ================= */
+/* Stylish home button with icon */
+.home-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;                                    /* Space between icon and text */
     color: white;
-    padding: 10px 15px;
+    padding: 12px 25px;
     font-size: 20px;
     text-decoration: none;
     transition: 0.3s;
+    background: linear-gradient(45deg, #00ff88, #00cc66); /* Gradient background */
+    border-radius: 50px;                           /* Fully rounded button */
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);  /* Glowing shadow */
+    border: 1px solid rgba(255, 255, 255, 0.3);     /* Subtle border */
+    position: relative;
+    overflow: hidden;                               /* For shine effect */
 }
 
-/* Hover effect for navbar links - green color */
-.nav-left a:hover {
+/* Home icon styles */
+.home-button i {
+    font-size: 24px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+    animation: bounce 2s infinite;                  /* Bouncing animation for icon */
+}
+
+/* Home text styles */
+.home-button span {
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Shine effect on hover */
+.home-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s;
+}
+
+/* Hover effects for home button */
+.home-button:hover {
+    transform: translateY(-3px);                    /* Lift up effect */
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.6);  /* Stronger glow on hover */
+    background: linear-gradient(45deg, #00cc66, #00ff88); /* Reverse gradient */
+}
+
+/* Shine animation on hover */
+.home-button:hover::before {
+    left: 100%;
+}
+
+/* Active state (when clicked) */
+.home-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 255, 136, 0.4);
+}
+
+/* ================= NAVBAR LINK STYLES ================= */
+/* Regular navbar links */
+.nav-left a:not(.home-button) {
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+/* Hover effect for regular navbar links */
+.nav-left a:not(.home-button):hover {
     color: #00ff88;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Active link style */
+.nav-left a.active {
+    color: #00ff88;
+    border-bottom: 2px solid #00ff88;
 }
 
 /* Right section of navbar */
 .nav-right {
-    margin-top: 0;
+    display: flex;
+    align-items: center;
 }
 
 /* Right navbar link styles - bordered button style */
@@ -67,38 +144,56 @@ body {
     border-radius: 20px;
     transition: 0.3s;
     font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Hover effect for right navbar link - green background */
 .nav-right a:hover {
     background-color: #00ff88;
     color: black;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+/* Bouncing animation for home icon */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
 }
 
 /* ================= HEADER STYLES ================= */
-/* Header section - removed background image since body has it */
+/* Header section */
 .header {
     text-align: center;
     padding: 60px 20px;
-    /* background-image is removed - now using body background */
 }
 
 /* Profile image in header - circular shape */
 .header img {
     width: 200px;
+    height: 200px;
     border-radius: 50%;
     margin-bottom: 20px;
+    border: 3px solid #00ff88;                     /* Green border around profile */
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);    /* Glowing effect */
+    object-fit: cover;
 }
 
 /* Header title styles */
 .header h2 {
     font-size: 32px;
+    text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3); /* Text glow */
+    margin-bottom: 10px;
 }
 
 /* Header paragraph styles */
 .header p {
     font-size: 18px;
-    opacity: 0.8;
+    opacity: 0.9;
+    margin: 5px 0;
 }
 
 /* ================= ABOUT SECTION STYLES ================= */
@@ -109,7 +204,8 @@ body {
     background-color: rgba(26, 26, 26, 0.85);    /* Semi-transparent dark background */
     margin: 20px;                                 /* Adds space around the section */
     border-radius: 20px;                          /* Rounded corners */
-    backdrop-filter: blur(3px);                    /* Optional: adds slight blur effect */
+    backdrop-filter: blur(3px);                    /* Adds slight blur effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);    /* Shadow for depth */
 }
 
 /* About section title with green color */
@@ -117,6 +213,22 @@ body {
     margin-bottom: 40px;
     font-size: 26px;
     color: #00ff88;
+    text-shadow: 0 2px 10px rgba(0, 255, 136, 0.5); /* Glowing text */
+    position: relative;
+    display: inline-block;
+}
+
+/* Decorative line under title */
+.about h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    border-radius: 3px;
 }
 
 /* About section paragraph */
@@ -136,12 +248,16 @@ body {
     border-radius: 15px;
     max-width: 600px;
     transition: 0.3s;
-    backdrop-filter: blur(2px);                    /* Optional: adds slight blur effect */
+    backdrop-filter: blur(2px);                    /* Adds slight blur effect */
+    border: 1px solid rgba(0, 255, 136, 0.2);      /* Subtle green border */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);      /* Shadow for depth */
 }
 
 /* Hover effect for project cards - slight scale increase */
 .project-card:hover {
     transform: scale(1.05);
+    border-color: #00ff88;                          /* Green border on hover */
+    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.3);  /* Green glow on hover */
 }
 
 /* Project card title with green color */
@@ -162,6 +278,17 @@ body {
     color: #00ff88;
     text-decoration: none;
     font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+/* Hover effect for project links */
+.project-card a:hover {
+    background-color: #00ff88;
+    color: #222;
+    box-shadow: 0 0 15px #00ff88;
 }
 
 /* ===================================================== */
@@ -174,9 +301,26 @@ body {
         padding: 15px 20px;
     }
 
+    /* Smaller home button for tablet */
+    .home-button {
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+
+    .home-button i {
+        font-size: 22px;
+    }
+
+    /* Regular nav links for tablet */
+    .nav-left a:not(.home-button) {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+
     /* Smaller profile image for tablet */
     .header img {
         width: 160px;
+        height: 160px;
     }
 
     /* Smaller header title for tablet */
@@ -219,12 +363,29 @@ body {
     .nav-left {
         justify-content: center;
         margin-bottom: 10px;
+        width: 100%;
+        gap: 3px;
     }
 
-    /* Smaller nav links on mobile */
-    .nav-left a {
+    /* Smaller home button for mobile */
+    .home-button {
+        padding: 8px 15px;
         font-size: 16px;
-        padding: 8px;
+        gap: 6px;
+    }
+
+    .home-button i {
+        font-size: 18px;
+    }
+
+    .home-button span {
+        font-size: 14px;
+    }
+
+    /* Regular nav links for mobile */
+    .nav-left a:not(.home-button) {
+        padding: 6px 8px;
+        font-size: 14px;
     }
 
     /* Adjust right nav margin on mobile */
@@ -246,11 +407,12 @@ body {
     /* Smaller profile image for mobile */
     .header img {
         width: 120px;
+        height: 120px;
     }
 
     /* Smaller header title for mobile */
     .header h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     /* Smaller header paragraph for mobile */
