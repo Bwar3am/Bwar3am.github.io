@@ -7,22 +7,30 @@
 }
 
 /* ================= BODY STYLES ================= */
-/* Set dark background and white text with Poppins font */
+/* Set background image and text styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #111;
+    background-image: url("modern.jpg");  /* Background image for the page */
+    background-size: cover;                      /* Image covers the entire page */
+    background-position: center;                 /* Center the image */
+    background-attachment: fixed;                 /* Image stays fixed while scrolling */
+    background-color: #111;                       /* Fallback color if image fails to load */
     color: white;
+    min-height: 100vh;                            /* Minimum height of the page */
+    margin: 0;
+    padding: 0;
 }
 
 /* ================= NAVBAR STYLES ================= */
-/* Flex container for navigation bar with black background */
+/* Flex container for navigation bar with semi-transparent black background */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.8);        /* Semi-transparent black */
     padding: 15px 40px;
     flex-wrap: wrap;
+    backdrop-filter: blur(5px);                   /* Optional: adds blur effect behind navbar */
 }
 
 /* Left section of navbar - flex container for links */
@@ -68,13 +76,11 @@ body {
 }
 
 /* ================= HEADER STYLES ================= */
-/* Header section with background image */
+/* Header section - removed background image since body has it */
 .header {
     text-align: center;
     padding: 60px 20px;
-    background-image: url("dark.jpg");
-    background-size: cover;
-    background-position: center;
+    /* background-image is removed - now using body background */
 }
 
 /* Profile image in header - circular shape */
@@ -96,16 +102,19 @@ body {
 }
 
 /* ================= ABOUT SECTION STYLES ================= */
-/* About section with dark background */
+/* About section with semi-transparent dark background */
 .about {
     padding: 70px 20px;
     text-align: center;
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0.85);    /* Semi-transparent dark background */
+    margin: 20px;                                 /* Adds space around the section */
+    border-radius: 20px;                          /* Rounded corners */
+    backdrop-filter: blur(3px);                    /* Optional: adds slight blur effect */
 }
 
 /* About section title with green color */
 .about h3 {
-    margin-bottom: 40px;  /* Increased margin for better spacing */
+    margin-bottom: 40px;
     font-size: 26px;
     color: #00ff88;
 }
@@ -119,14 +128,15 @@ body {
 }
 
 /* ================= PROJECT CARDS STYLES ================= */
-/* Individual project card container */
+/* Individual project card container with semi-transparent background */
 .project-card {
-    background-color: #222;
+    background-color: rgba(34, 34, 34, 0.9);      /* Semi-transparent dark background */
     padding: 25px;
-    margin: 30px auto;  /* Increased margin for better spacing between cards */
+    margin: 30px auto;
     border-radius: 15px;
     max-width: 600px;
     transition: 0.3s;
+    backdrop-filter: blur(2px);                    /* Optional: adds slight blur effect */
 }
 
 /* Hover effect for project cards - slight scale increase */
@@ -180,6 +190,12 @@ body {
         padding: 0 20px;
     }
 
+    /* Adjust about section for tablet */
+    .about {
+        margin: 15px;
+        padding: 50px 15px;
+    }
+
     /* Project cards take 90% width on tablet */
     .project-card {
         width: 90%;
@@ -196,6 +212,7 @@ body {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 10px 15px;
     }
 
     /* Center nav links on mobile */
@@ -241,15 +258,16 @@ body {
         font-size: 14px;
     }
 
-    /* Adjust about section padding for mobile */
+    /* Adjust about section for mobile */
     .about {
-        padding: 40px 15px;
+        padding: 30px 12px;
+        margin: 10px;
     }
 
     /* Smaller about title for mobile */
     .about h3 {
         font-size: 20px;
-        margin-bottom: 30px;  /* Adjusted for mobile */
+        margin-bottom: 30px;
     }
 
     /* Smaller about paragraph for mobile */
@@ -260,7 +278,8 @@ body {
     /* Adjust project card padding for mobile */
     .project-card {
         padding: 20px;
-        margin: 20px auto;  /* Slightly smaller margin on mobile */
+        margin: 20px auto;
+        width: 95%;
     }
 
     /* Smaller project card title for mobile */
