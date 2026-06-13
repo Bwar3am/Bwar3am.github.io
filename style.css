@@ -11,164 +11,87 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-image: url("modern.jpg");  /* Background image for the page */
-    background-size: cover;                      /* Image covers the entire page */
-    background-position: center;                 /* Center the image */
-    background-attachment: fixed;                 /* Image stays fixed while scrolling */
-    background-color: #111;                       /* Fallback color if image fails to load */
+    background-size: cover;               /* Image covers the entire page */
+    background-position: center;          /* Center the image */
+    background-attachment: fixed;         /* Image stays fixed while scrolling */
+    background-color: #111;               /* Fallback color if image fails to load */
     color: white;
-    min-height: 100vh;                            /* Minimum height of the page */
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;                    /* Minimum height of the page */
+    display: flex;
+    flex-direction: column;
 }
 
-/* ================= NAVBAR STYLES ================= */
-/* Flex container for navigation bar with semi-transparent black background */
+/* ================= DESKTOP NAVBAR STYLES (Default - for screens > 992px) ================= */
+/* Desktop: Fixed at top, aligned to left */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;          /* Align content to the LEFT on desktop */
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);        /* Semi-transparent black */
-    padding: 15px 40px;
-    flex-wrap: wrap;
-    backdrop-filter: blur(5px);                   /* Adds blur effect behind navbar */
-    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2); /* Green glow effect */
+    background-color: rgba(0, 0, 0, 0.85);        /* Semi-transparent black */
+    padding: 12px 30px;
+    backdrop-filter: blur(8px);                    /* Adds blur effect behind navbar */
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.2); /* Green glow effect */
+    position: fixed;                               /* Fixed position for desktop */
+    top: 0;                                        /* Stick to top */
+    left: 0;
+    width: 100%;
+    z-index: 1000;                                 /* Stay above all content */
 }
 
-/* Left section of navbar - flex container for links */
+/* Left section of navbar - flex container for social links */
 .nav-left {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 5px;
+    justify-content: flex-start;          /* Keep social icons to the left */
+    gap: 15px;
 }
 
-/* ================= HOME BUTTON STYLES ================= */
-/* Stylish home button with icon */
-.home-button {
-    display: flex;
-    align-items: center;
-    gap: 10px;                                    /* Space between icon and text */
+/* Social icon link styles for desktop */
+.nav-left a {
     color: white;
-    padding: 12px 25px;
-    font-size: 20px;
+    font-size: 22px;
     text-decoration: none;
     transition: 0.3s;
-    background: linear-gradient(45deg, #00ff88, #00cc66); /* Gradient background */
-    border-radius: 50px;                           /* Fully rounded button */
-    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);  /* Glowing shadow */
-    border: 1px solid rgba(255, 255, 255, 0.3);     /* Subtle border */
-    position: relative;
-    overflow: hidden;                               /* For shine effect */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
 }
 
-/* Home icon styles */
-.home-button i {
-    font-size: 24px;
-    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
-    animation: bounce 2s infinite;                  /* Bouncing animation for icon */
+/* Hover effect for social links on desktop */
+.nav-left a:hover {
+    color: #00ff88;
+    background-color: rgba(0, 255, 136, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
 }
 
-/* Home text styles */
-.home-button span {
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Shine effect on hover */
-.home-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.7s;
-}
-
-/* Hover effects for home button */
-.home-button:hover {
-    transform: translateY(-3px);                    /* Lift up effect */
-    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.6);  /* Stronger glow on hover */
-    background: linear-gradient(45deg, #00cc66, #00ff88); /* Reverse gradient */
-}
-
-/* Shine animation on hover */
-.home-button:hover::before {
-    left: 100%;
-}
-
-/* Active state (when clicked) */
-.home-button:active {
+/* Active/click effect */
+.nav-left a:active {
     transform: translateY(0);
-    box-shadow: 0 3px 10px rgba(0, 255, 136, 0.4);
 }
 
-/* ================= NAVBAR LINK STYLES ================= */
-/* Regular navbar links */
-.nav-left a:not(.home-button) {
-    color: white;
-    padding: 10px 15px;
-    font-size: 18px;
-    text-decoration: none;
-    transition: 0.3s;
-    border-radius: 5px;
-    margin: 0 2px;
+/* Hide the credit text on desktop (only shows on mobile/tablet) */
+.navbar::after {
+    display: none;
 }
 
-/* Hover effect for regular navbar links */
-.nav-left a:not(.home-button):hover {
-    color: #00ff88;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Active link style */
-.nav-left a.active {
-    color: #00ff88;
-    border-bottom: 2px solid #00ff88;
-}
-
-/* Right section of navbar */
-.nav-right {
-    display: flex;
-    align-items: center;
-}
-
-/* Right navbar link styles - bordered button style */
-.nav-right a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 18px;
-    border: 1px solid #00ff88;
-    border-radius: 20px;
-    transition: 0.3s;
-    font-size: 16px;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-/* Hover effect for right navbar link - green background */
-.nav-right a:hover {
-    background-color: #00ff88;
-    color: black;
-    box-shadow: 0 0 15px #00ff88;
-}
-
-/* Bouncing animation for home icon */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
+/* ================= PADDING FOR FIXED NAVBAR (DESKTOP ONLY) ================= */
+/* Add padding to header top so content doesn't hide under fixed navbar */
+.header {
+    margin-top: 80px;  /* Push content below fixed navbar on desktop */
 }
 
 /* ================= HEADER STYLES ================= */
 /* Header section */
 .header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 60px 20px 30px 20px;
 }
 
 /* Profile image in header - circular shape */
@@ -204,7 +127,7 @@ body {
     background-color: rgba(26, 26, 26, 0.85);    /* Semi-transparent dark background */
     margin: 20px;                                 /* Adds space around the section */
     border-radius: 20px;                          /* Rounded corners */
-    backdrop-filter: blur(3px);                    /* Adds slight blur effect */
+    backdrop-filter: blur(3px);                   /* Adds slight blur effect */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);    /* Shadow for depth */
 }
 
@@ -239,218 +162,276 @@ body {
     font-size: 18px;
 }
 
-/* ================= PROJECT CARDS STYLES ================= */
-/* Individual project card container with semi-transparent background */
-.project-card {
-    background-color: rgba(34, 34, 34, 0.9);      /* Semi-transparent dark background */
-    padding: 25px;
-    margin: 30px auto;
-    border-radius: 15px;
-    max-width: 600px;
-    transition: 0.3s;
-    backdrop-filter: blur(2px);                    /* Adds slight blur effect */
-    border: 1px solid rgba(0, 255, 136, 0.2);      /* Subtle green border */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);      /* Shadow for depth */
-}
-
-/* Hover effect for project cards - slight scale increase */
-.project-card:hover {
-    transform: scale(1.05);
-    border-color: #00ff88;                          /* Green border on hover */
-    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.3);  /* Green glow on hover */
-}
-
-/* Project card title with green color */
-.project-card h4 {
-    margin-bottom: 15px;
-    color: #00ff88;
-    font-size: 20px;
-}
-
-/* Project card paragraph */
-.project-card p {
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-/* Project card link styles */
-.project-card a {
-    color: #00ff88;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 15px;
+/* ================= PROJECTS SECTION STYLES ================= */
+/* Projects section - now SAME SIZE as About section */
+.projects-section {
+    max-width: none;                      /* Remove max-width restriction */
+    width: auto;                          /* Full width like about section */
+    margin: 20px;                         /* Same margin as about section */
+    padding: 70px 20px;                   /* Same padding as about section */
+    text-align: center;
+    background-color: rgba(26, 26, 26, 0.85);
     border-radius: 20px;
-    transition: 0.3s;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.projects-section h3 {
+    margin-bottom: 40px;
+    font-size: 26px;
+    color: #00ff88;
+    text-shadow: 0 2px 10px rgba(0, 255, 136, 0.5);
+    position: relative;
     display: inline-block;
 }
 
-/* Hover effect for project links */
-.project-card a:hover {
-    background-color: #00ff88;
-    color: #222;
-    box-shadow: 0 0 15px #00ff88;
+.projects-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    border-radius: 3px;
 }
 
-/* ===================================================== */
-/* ==================== TABLET RESPONSIVE ============= */
-/* ===================================================== */
+.projects-section p {
+    max-width: 800px;                     /* Same max-width as about paragraph */
+    margin: 0 auto 25px auto;             /* Centered with bottom margin */
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+/* Projects button styles */
+.projects-section .projects-btn {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    border: 1px solid #00ff88;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.projects-section .projects-btn i {
+    margin-right: 8px;
+}
+
+.projects-section .projects-btn:hover {
+    background-color: #00ff88;
+    color: black;
+    box-shadow: 0 0 18px #00ff88;
+    transform: translateY(-2px);
+}
+
+.projects-section .projects-btn:active {
+    transform: translateY(0);
+}
+
+/* ================= TABLET RESPONSIVE (max-width: 992px) ================= */
+/* On tablet: navbar moves to BOTTOM (not fixed, user scrolls to see it) */
 @media (max-width: 992px) {
-
-    /* Adjust navbar padding for tablet */
+    /* Make body a flex column to push navbar to bottom */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    /* Push navbar to the bottom using margin-top auto */
     .navbar {
-        padding: 15px 20px;
+        margin-top: auto;                 /* Pushes navbar to bottom of page */
+        position: relative;               /* Not fixed anymore */
+        top: auto;
+        left: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;           /* Stack items vertically */
+        justify-content: center;
+        align-items: center;
+        padding: 12px 15px;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 0;
+        box-shadow: 0 -2px 15px rgba(0, 255, 136, 0.1);
     }
-
-    /* Smaller home button for tablet */
-    .home-button {
-        padding: 10px 20px;
-        font-size: 18px;
+    
+    /* Center the social icons */
+    .nav-left {
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
     }
-
-    .home-button i {
-        font-size: 22px;
+    
+    /* Slightly larger icons for easier touch on tablet */
+    .nav-left a {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
     }
-
-    /* Regular nav links for tablet */
-    .nav-left a:not(.home-button) {
-        padding: 8px 12px;
-        font-size: 16px;
+    
+    /* Show credit text below icons for tablet */
+    .navbar::after {
+        display: block;                   /* Show the credit text */
+        content: "🔥 Made with passion by me";
+        width: 100%;
+        text-align: center;
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 8px;
+        color: #00ff88;
+        letter-spacing: 0.5px;
     }
-
-    /* Smaller profile image for tablet */
+    
+    /* Remove the top margin from header since navbar is no longer fixed at top */
+    .header {
+        margin-top: 0;
+    }
+    
+    /* Adjust profile image for tablet */
     .header img {
         width: 160px;
         height: 160px;
     }
-
-    /* Smaller header title for tablet */
+    
     .header h2 {
-        font-size: 26px;
+        font-size: 28px;
     }
-
-    /* Adjust about paragraph for tablet */
-    .about p {
-        font-size: 16px;
-        padding: 0 20px;
-    }
-
-    /* Adjust about section for tablet */
-    .about {
+    
+    /* Adjust spacing for sections */
+    .about, .projects-section {
         margin: 15px;
         padding: 50px 15px;
     }
-
-    /* Project cards take 90% width on tablet */
-    .project-card {
-        width: 90%;
+    
+    .about p, .projects-section p {
+        font-size: 16px;
     }
 }
 
-/* ===================================================== */
-/* ==================== MOBILE RESPONSIVE ============= */
-/* ===================================================== */
+/* ================= MOBILE RESPONSIVE (max-width: 600px) ================= */
+/* On mobile: navbar at BOTTOM, compact design, user scrolls to see it */
 @media (max-width: 600px) {
-
-    /* Stack navbar elements vertically on mobile */
-    .navbar {
+    /* Keep navbar at bottom via flex */
+    body {
+        display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 10px 15px;
+        min-height: 100vh;
     }
-
-    /* Center nav links on mobile */
+    
+    .navbar {
+        margin-top: auto;                 /* Keeps navbar at bottom */
+        padding: 10px 12px;
+        border-radius: 12px 12px 0 0;    /* Slightly rounded top corners */
+        width: 100%;                      /* Full width */
+        background-color: rgba(0, 0, 0, 0.92);
+    }
+    
+    /* Center icons with smaller gap */
     .nav-left {
-        justify-content: center;
-        margin-bottom: 10px;
-        width: 100%;
-        gap: 3px;
+        gap: 12px;
     }
-
-    /* Smaller home button for mobile */
-    .home-button {
-        padding: 8px 15px;
-        font-size: 16px;
-        gap: 6px;
-    }
-
-    .home-button i {
+    
+    /* Smaller icon buttons for mobile - more compact */
+    .nav-left a {
+        width: 38px;
+        height: 38px;
         font-size: 18px;
     }
-
-    .home-button span {
-        font-size: 14px;
+    
+    /* Smaller credit text for mobile */
+    .navbar::after {
+        font-size: 9px;
+        margin-top: 5px;
+        content: "🔥 Made with passion by me";
     }
-
-    /* Regular nav links for mobile */
-    .nav-left a:not(.home-button) {
-        padding: 6px 8px;
-        font-size: 14px;
-    }
-
-    /* Adjust right nav margin on mobile */
-    .nav-right {
-        margin-top: 10px;
-    }
-
-    /* Smaller right nav button on mobile */
-    .nav-right a {
-        font-size: 14px;
-        padding: 6px 14px;
-    }
-
-    /* Adjust header padding for mobile */
+    
+    /* Header adjustments for mobile */
     .header {
-        padding: 40px 15px;
+        padding: 30px 15px 20px 15px;
     }
-
-    /* Smaller profile image for mobile */
+    
     .header img {
         width: 120px;
         height: 120px;
     }
-
-    /* Smaller header title for mobile */
+    
     .header h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
-
-    /* Smaller header paragraph for mobile */
+    
     .header p {
         font-size: 14px;
     }
-
-    /* Adjust about section for mobile */
+    
+    /* About section adjustments for mobile */
     .about {
-        padding: 30px 12px;
+        padding: 35px 15px;
         margin: 10px;
     }
-
-    /* Smaller about title for mobile */
+    
     .about h3 {
         font-size: 20px;
         margin-bottom: 30px;
     }
-
-    /* Smaller about paragraph for mobile */
+    
     .about p {
         font-size: 14px;
+        line-height: 1.6;
     }
-
-    /* Adjust project card padding for mobile */
-    .project-card {
-        padding: 20px;
-        margin: 20px auto;
-        width: 95%;
+    
+    /* Projects section - SAME SIZE as about on mobile */
+    .projects-section {
+        padding: 35px 15px;               /* Same as about section */
+        margin: 10px;                     /* Same as about section */
+        margin-bottom: 10px;
     }
+    
+    .projects-section h3 {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .projects-section p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    /* Smaller button for mobile */
+    .projects-btn {
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+}
 
-    /* Smaller project card title for mobile */
-    .project-card h4 {
+/* ================= EXTRA SMALL MOBILE (max-width: 400px) ================= */
+@media (max-width: 400px) {
+    .nav-left {
+        gap: 8px;
+    }
+    
+    .nav-left a {
+        width: 34px;
+        height: 34px;
         font-size: 16px;
     }
-
-    /* Smaller project card paragraph for mobile */
-    .project-card p {
-        font-size: 14px;
+    
+    .navbar::after {
+        font-size: 8px;
+        margin-top: 4px;
+    }
+    
+    .about h3, .projects-section h3 {
+        font-size: 18px;
+    }
+    
+    .about, .projects-section {
+        padding: 30px 12px;
     }
 }
