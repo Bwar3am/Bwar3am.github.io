@@ -279,7 +279,7 @@ body {
     /* Show credit text below icons for tablet */
     .navbar::after {
         display: block;                   /* Show the credit text */
-        content: "🔥 Made with passion by me";
+        content: "🔥 Made with passion by me @2026 🔥";
         width: 100%;
         text-align: center;
         font-size: 11px;
