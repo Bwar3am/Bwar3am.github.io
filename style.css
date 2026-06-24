@@ -1,5 +1,4 @@
 /* ================= GLOBAL RESET ================= */
-/* Remove default margins and paddings, set box-sizing to border-box for all elements */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,141 +6,168 @@
 }
 
 /* ================= BODY STYLES ================= */
-/* Set background image and text styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url("modern.jpg");  /* Background image for the page */
-    background-size: cover;               /* Image covers the entire page */
-    background-position: center;          /* Center the image */
-    background-attachment: fixed;         /* Image stays fixed while scrolling */
-    background-color: #111;               /* Fallback color if image fails to load */
-    color: white;
-    min-height: 100vh;                    /* Minimum height of the page */
+    background-image: url("modern.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #111;
+    color: #f2f2f2;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
 }
 
-/* ================= DESKTOP NAVBAR STYLES (Default - for screens > 992px) ================= */
-/* Desktop: Fixed at top, aligned to left */
+/* ===================================================== */
+/* ================= NAVBAR (DESKTOP) =================== */
+/* A floating glass pill anchored top-left, with a brand   */
+/* mark (added via ::before, no HTML changes needed) and    */
+/* a divider separating it from the social icons.           */
+/* ===================================================== */
 .navbar {
+    position: fixed;
+    top: 18px;
+    left: 18px;
     display: flex;
-    justify-content: flex-start;          /* Align content to the LEFT on desktop */
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);        /* Semi-transparent black */
-    padding: 12px 30px;
-    backdrop-filter: blur(8px);                    /* Adds blur effect behind navbar */
-    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.2); /* Green glow effect */
-    position: fixed;                               /* Fixed position for desktop */
-    top: 0;                                        /* Stick to top */
-    left: 0;
-    width: 100%;
-    z-index: 1000;                                 /* Stay above all content */
+    gap: 14px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, rgba(22, 22, 22, 0.8), rgba(8, 8, 8, 0.9));
+    border: 1px solid rgba(0, 255, 136, 0.25);
+    border-radius: 50px;
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 8px 28px rgba(0, 255, 136, 0.18),
+        0 2px 10px rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Left section of navbar - flex container for social links */
+.navbar:hover {
+    border-color: rgba(0, 255, 136, 0.5);
+    box-shadow:
+        0 10px 32px rgba(0, 255, 136, 0.28),
+        0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Brand mark, generated purely with CSS so the markup stays untouched */
+.navbar::before {
+    content: "BARSAM";
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #00ff88, #00cc66);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+}
+
+/* Divider between the brand mark and the social icons */
 .nav-left {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;          /* Keep social icons to the left */
-    gap: 15px;
+    justify-content: flex-start;
+    gap: 12px;
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Social icon link styles for desktop */
 .nav-left a {
-    color: white;
-    font-size: 22px;
+    color: #f2f2f2;
+    font-size: 18px;
     text-decoration: none;
-    transition: 0.3s;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.06);
+    transition: all 0.25s ease;
 }
 
-/* Hover effect for social links on desktop */
 .nav-left a:hover {
     color: #00ff88;
-    background-color: rgba(0, 255, 136, 0.2);
+    background-color: rgba(0, 255, 136, 0.18);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
 }
 
-/* Active/click effect */
 .nav-left a:active {
     transform: translateY(0);
 }
 
-/* Hide the credit text on desktop (only shows on mobile/tablet) */
+/* Credit text only appears on tablet/mobile, stacked under the icons */
 .navbar::after {
+    content: "Made with passion by Barsam \00A9 2026";
     display: none;
 }
 
-/* ================= PADDING FOR FIXED NAVBAR (DESKTOP ONLY) ================= */
-/* Add padding to header top so content doesn't hide under fixed navbar */
-.header {
-    margin-top: 80px;  /* Push content below fixed navbar on desktop */
-}
-
 /* ================= HEADER STYLES ================= */
-/* Header section */
 .header {
     text-align: center;
     padding: 60px 20px 30px 20px;
+    margin-top: 100px; /* clearance for the floating navbar */
 }
 
-/* Profile image in header - circular shape */
 .header img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin-bottom: 20px;
-    border: 3px solid #00ff88;                     /* Green border around profile */
-    box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);    /* Glowing effect */
+    margin-bottom: 22px;
+    border: 3px solid #00ff88;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
     object-fit: cover;
 }
 
-/* Header title styles */
 .header h2 {
-    font-size: 32px;
-    text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3); /* Text glow */
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, #ffffff, #00ff88);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 14px rgba(0, 255, 136, 0.25);
     margin-bottom: 10px;
 }
 
-/* Header paragraph styles */
 .header p {
-    font-size: 18px;
-    opacity: 0.9;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #00ff88;
+    opacity: 0.85;
     margin: 5px 0;
 }
 
 /* ================= ABOUT SECTION STYLES ================= */
-/* About section with semi-transparent dark background */
 .about {
     padding: 70px 20px;
     text-align: center;
-    background-color: rgba(26, 26, 26, 0.85);    /* Semi-transparent dark background */
-    margin: 20px;                                 /* Adds space around the section */
-    border-radius: 20px;                          /* Rounded corners */
-    backdrop-filter: blur(3px);                   /* Adds slight blur effect */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);    /* Shadow for depth */
+    background-color: rgba(26, 26, 26, 0.85);
+    margin: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* About section title with green color */
 .about h3 {
     margin-bottom: 40px;
-    font-size: 26px;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1px;
     color: #00ff88;
-    text-shadow: 0 2px 10px rgba(0, 255, 136, 0.5); /* Glowing text */
+    text-shadow: 0 2px 10px rgba(0, 255, 136, 0.5);
     position: relative;
     display: inline-block;
 }
 
-/* Decorative line under title */
 .about h3::after {
     content: '';
     position: absolute;
@@ -154,32 +180,32 @@ body {
     border-radius: 3px;
 }
 
-/* About section paragraph */
 .about p {
     max-width: 800px;
     margin: auto;
-    line-height: 1.8;
+    line-height: 1.85;
     font-size: 18px;
+    font-weight: 300;
+    color: #dcdcdc;
 }
 
 /* ================= PROJECTS SECTION STYLES ================= */
-/* Projects section - now SAME SIZE as About section */
 .projects-section {
-    max-width: none;                      /* Remove max-width restriction */
-    width: auto;                          /* Full width like about section */
-    margin: 20px;                         /* Same margin as about section */
-    padding: 70px 20px;                   /* Same padding as about section */
+    margin: 20px;
+    margin-bottom: 20px;
+    padding: 70px 20px;
     text-align: center;
     background-color: rgba(26, 26, 26, 0.85);
     border-radius: 20px;
     backdrop-filter: blur(3px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
 }
 
 .projects-section h3 {
     margin-bottom: 40px;
-    font-size: 26px;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1px;
     color: #00ff88;
     text-shadow: 0 2px 10px rgba(0, 255, 136, 0.5);
     position: relative;
@@ -199,24 +225,26 @@ body {
 }
 
 .projects-section p {
-    max-width: 800px;                     /* Same max-width as about paragraph */
-    margin: 0 auto 25px auto;             /* Centered with bottom margin */
-    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 25px auto;
+    line-height: 1.85;
     font-size: 18px;
+    font-weight: 300;
+    color: #dcdcdc;
 }
 
-/* Projects button styles */
 .projects-section .projects-btn {
     display: inline-block;
-    color: white;
+    color: #f2f2f2;
     text-decoration: none;
-    padding: 12px 28px;
+    padding: 13px 30px;
     border: 1px solid #00ff88;
     border-radius: 30px;
     background-color: rgba(0, 0, 0, 0.4);
     transition: 0.3s;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 16px;
+    letter-spacing: 0.5px;
     cursor: pointer;
 }
 
@@ -226,7 +254,7 @@ body {
 
 .projects-section .projects-btn:hover {
     background-color: #00ff88;
-    color: black;
+    color: #111;
     box-shadow: 0 0 18px #00ff88;
     transform: translateY(-2px);
 }
@@ -235,51 +263,47 @@ body {
     transform: translateY(0);
 }
 
-/* ================= TABLET RESPONSIVE (max-width: 992px) ================= */
-/* On tablet: navbar moves to BOTTOM (not fixed, user scrolls to see it) */
+/* ===================================================== */
+/* ================= TABLET RESPONSIVE ================== */
+/* Navbar becomes a full-width floating dock at the bottom */
+/* ===================================================== */
 @media (max-width: 992px) {
-    /* Make body a flex column to push navbar to bottom */
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-    
-    /* Push navbar to the bottom using margin-top auto */
     .navbar {
-        margin-top: auto;                 /* Pushes navbar to bottom of page */
-        position: relative;               /* Not fixed anymore */
+        margin-top: auto;
+        position: relative;
         top: auto;
         left: auto;
-        width: 100%;
-        display: flex;
-        flex-direction: column;           /* Stack items vertically */
+        width: calc(100% - 32px);
+        margin: auto 16px 16px 16px;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        padding: 12px 15px;
-        background-color: rgba(0, 0, 0, 0.9);
-        border-radius: 0;
-        box-shadow: 0 -2px 15px rgba(0, 255, 136, 0.1);
+        padding: 16px;
+        border-radius: 24px;
     }
-    
-    /* Center the social icons */
+
+    .navbar::before {
+        margin-bottom: 4px;
+    }
+
     .nav-left {
         justify-content: center;
         width: 100%;
-        gap: 20px;
+        gap: 18px;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 12px;
+        margin-top: 4px;
     }
-    
-    /* Slightly larger icons for easier touch on tablet */
+
     .nav-left a {
-        width: 48px;
-        height: 48px;
-        font-size: 24px;
+        width: 46px;
+        height: 46px;
+        font-size: 22px;
     }
-    
-    /* Show credit text below icons for tablet */
+
     .navbar::after {
-        display: block;                   /* Show the credit text */
-        content: "🔥 Made with passion by me @2026 🔥";
+        display: block;
         width: 100%;
         text-align: center;
         font-size: 11px;
@@ -288,149 +312,135 @@ body {
         color: #00ff88;
         letter-spacing: 0.5px;
     }
-    
-    /* Remove the top margin from header since navbar is no longer fixed at top */
+
     .header {
         margin-top: 0;
     }
-    
-    /* Adjust profile image for tablet */
+
     .header img {
         width: 160px;
         height: 160px;
     }
-    
+
     .header h2 {
         font-size: 28px;
     }
-    
-    /* Adjust spacing for sections */
+
     .about, .projects-section {
         margin: 15px;
         padding: 50px 15px;
     }
-    
+
     .about p, .projects-section p {
         font-size: 16px;
     }
 }
 
-/* ================= MOBILE RESPONSIVE (max-width: 600px) ================= */
-/* On mobile: navbar at BOTTOM, compact design, user scrolls to see it */
+/* ===================================================== */
+/* ================= MOBILE RESPONSIVE =================== */
+/* ===================================================== */
 @media (max-width: 600px) {
-    /* Keep navbar at bottom via flex */
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-    
     .navbar {
-        margin-top: auto;                 /* Keeps navbar at bottom */
-        padding: 10px 12px;
-        border-radius: 12px 12px 0 0;    /* Slightly rounded top corners */
-        width: 100%;                      /* Full width */
-        background-color: rgba(0, 0, 0, 0.92);
+        width: calc(100% - 20px);
+        margin: auto 10px 10px 10px;
+        padding: 14px 12px;
+        border-radius: 18px;
     }
-    
-    /* Center icons with smaller gap */
+
     .nav-left {
         gap: 12px;
     }
-    
-    /* Smaller icon buttons for mobile - more compact */
+
     .nav-left a {
         width: 38px;
         height: 38px;
         font-size: 18px;
     }
-    
-    /* Smaller credit text for mobile */
+
     .navbar::after {
         font-size: 9px;
         margin-top: 5px;
-        content: "🔥 Made with passion by Bwar3am 🔥";
     }
-    
-    /* Header adjustments for mobile */
+
     .header {
         padding: 30px 15px 20px 15px;
     }
-    
+
     .header img {
         width: 120px;
         height: 120px;
     }
-    
+
     .header h2 {
-        font-size: 20px;
+        font-size: 22px;
     }
-    
+
     .header p {
-        font-size: 14px;
+        font-size: 13px;
     }
-    
-    /* About section adjustments for mobile */
+
     .about {
         padding: 35px 15px;
         margin: 10px;
     }
-    
+
     .about h3 {
         font-size: 20px;
         margin-bottom: 30px;
     }
-    
+
     .about p {
         font-size: 14px;
         line-height: 1.6;
     }
-    
-    /* Projects section - SAME SIZE as about on mobile */
+
     .projects-section {
-        padding: 35px 15px;               /* Same as about section */
-        margin: 10px;                     /* Same as about section */
+        padding: 35px 15px;
+        margin: 10px;
         margin-bottom: 10px;
     }
-    
+
     .projects-section h3 {
         font-size: 20px;
         margin-bottom: 30px;
     }
-    
+
     .projects-section p {
         font-size: 14px;
         line-height: 1.6;
     }
-    
-    /* Smaller button for mobile */
-    .projects-btn {
-        padding: 8px 20px;
+
+    .projects-section .projects-btn {
+        padding: 9px 22px;
         font-size: 13px;
     }
 }
 
-/* ================= EXTRA SMALL MOBILE (max-width: 400px) ================= */
+/* ================= EXTRA SMALL MOBILE ================= */
 @media (max-width: 400px) {
+    .navbar::before {
+        font-size: 13px;
+    }
+
     .nav-left {
         gap: 8px;
     }
-    
+
     .nav-left a {
         width: 34px;
         height: 34px;
         font-size: 16px;
     }
-    
+
     .navbar::after {
         font-size: 8px;
         margin-top: 4px;
     }
-    
+
     .about h3, .projects-section h3 {
         font-size: 18px;
     }
-    
+
     .about, .projects-section {
         padding: 30px 12px;
     }
