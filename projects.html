@@ -2,68 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>My Projects | Barsam</title>
-    <!-- Font Awesome Icons CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Projects Page CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | Barsam Hassanzadeh-Aski</title>
+    <meta name="description" content="Showcase of my projects in Electrical Engineering, Automation, and Machine Learning.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
+    <!-- Background -->
+    <div class="background"></div>
 
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="nav-left">
-            <a href="index.html" class="home-button">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-        </div>
-    </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+    </nav>
 
     <!-- Projects Section -->
-    <div class="projects-container">
-        <h3>My GitHub Projects</h3>
+    <section class="projects-page">
+        <div class="projects-container">
+            <h1 class="section-title">My Projects</h1>
+            <p class="projects-subtitle">A collection of my work in Electrical Engineering, Automation, and Machine Learning</p>
+            
+            <!-- Project Card 1 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Elec Test</h3>
+                    <p>Implementing various circuits with simulation softwares (LTspice, Proteus, MATLAB Simulink).</p>
+                    <a href="https://github.com/Bwar3am/electest" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
 
-        <!-- Project Card 1 -->
-        <div class="project-card">
-            <h4>Elec Test</h4>
-            <p>Implementing various circuits with simulation softwares (LTspice, Proteus, MATLAB Simulink).</p>
-            <a href="https://github.com/Bwar3am/electest" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
+            <!-- Project Card 2 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Arduino Automation</h3>
+                    <p>Industrial automation mini-projects using Arduino Uno, sensors, actuators, and embedded C programming.</p>
+                    <a href="https://github.com/Bwar3am/circuits-with-arduino" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Machine Learning In Use</h3>
+                    <p>Implementing and training important ML algorithms including regression, classification, and clustering using Python.</p>
+                    <a href="https://github.com/Bwar3am/machine-learning-in-use" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Bwar3amino</h3>
+                    <p>Building a full-stack web application with Django framework and Python (backend + frontend integration).</p>
+                    <a href="https://github.com/Bwar3am/Bwar3amino" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Project Card 2 -->
-        <div class="project-card">
-            <h4>Arduino Automation</h4>
-            <p>Industrial automation mini-projects using Arduino Uno, sensors, actuators, and embedded C programming.</p>
-            <a href="https://github.com/Bwar3am/circuits-with-arduino" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-
-        <!-- Project Card 3 -->
-        <div class="project-card">
-            <h4>Machine Learning In Use</h4>
-            <p>Implementing and training important ML algorithms including regression, classification, and clustering using Python.</p>
-            <a href="https://github.com/Bwar3am/machine-learning-in-use" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-
-        <!-- Project Card 4 -->
-        <div class="project-card">
-            <h4>Bwar3amino</h4>
-            <p>Building a full-stack web application with Django framework and Python (backend + frontend integration).</p>
-            <a href="https://github.com/Bwar3am/Bwar3amino" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
-        </div>
-
-    </div>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Barsam Hassanzadeh-Aski</p>
+        <p>Always learning • Always building</p>
+    </footer>
 </body>
 </html>
